@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 
 
@@ -54,7 +56,7 @@ public class SpoonObjectFieldsTable extends JFrame {
 		}
 
 		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) {
+		public @Nullable Object getValueAt(int rowIndex, int columnIndex) {
 			Field m = field.get(rowIndex);
 			switch (columnIndex) {
 			case (0):

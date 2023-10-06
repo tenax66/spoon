@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.jspecify.annotations.Nullable;
 import spoon.compiler.SpoonFile;
 import spoon.compiler.SpoonFolder;
 
@@ -58,7 +59,7 @@ public class VirtualFolder implements SpoonFolder {
 	}
 
 	@Override
-	public SpoonFolder getParent() {
+	public @Nullable SpoonFolder getParent() {
 		return null;
 	}
 
@@ -86,7 +87,7 @@ public class VirtualFolder implements SpoonFolder {
 	}
 
 	@Override
-	public File getFileSystemParent() {
+	public @Nullable File getFileSystemParent() {
 		return null;
 	}
 
@@ -96,7 +97,7 @@ public class VirtualFolder implements SpoonFolder {
 	}
 
 	@Override
-	public File toFile() {
+	public @Nullable File toFile() {
 		return null;
 	}
 

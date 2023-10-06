@@ -7,6 +7,7 @@
  */
 package spoon.support.compiler;
 
+import org.jspecify.annotations.Nullable;
 import spoon.compiler.Environment;
 import spoon.compiler.SpoonFile;
 import spoon.compiler.SpoonFolder;
@@ -57,7 +58,7 @@ public class VirtualFile implements SpoonFile {
 	}
 
 	@Override
-	public File getFileSystemParent() {
+	public @Nullable File getFileSystemParent() {
 		return null;
 	}
 
@@ -77,7 +78,7 @@ public class VirtualFile implements SpoonFile {
 	}
 
 	@Override
-	public File toFile() {
+	public @Nullable File toFile() {
 		return null;
 	}
 

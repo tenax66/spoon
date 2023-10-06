@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import spoon.support.modelobs.FineModelChangeListener;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.path.CtRole;
@@ -160,7 +161,7 @@ public abstract class ModelList<T extends CtElement> extends AbstractList<T> imp
 	}
 
 	@Override
-	public void add(int index, T element) {
+	public void add(int index, @Nullable T element) {
 		if (element == null) {
 			return;
 		}

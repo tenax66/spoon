@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.declaration.CtModule;
 import spoon.reflect.reference.CtModuleReference;
 import spoon.reflect.visitor.CtVisitor;
@@ -24,7 +25,7 @@ public class CtModuleReferenceImpl extends CtReferenceImpl implements CtModuleRe
 	}
 
 	@Override
-	protected AnnotatedElement getActualAnnotatedElement() {
+	protected @Nullable AnnotatedElement getActualAnnotatedElement() {
 		return null;
 	}
 

@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtExpression;
@@ -201,7 +202,7 @@ public class CtAnnotationImpl<A extends Annotation> extends CtExpressionImpl<A> 
 		return addValueExpression(elementName, value);
 	}
 
-	private Class<?> getElementType(String name) {
+	private @Nullable Class<?> getElementType(String name) {
 		// Try by CT reflection
 		CtType<?> t = getAnnotationType().getDeclaration();
 		if (t != null) {
@@ -254,7 +255,7 @@ public class CtAnnotationImpl<A extends Annotation> extends CtExpressionImpl<A> 
 	}
 
 	@Override
-	public Object getValueAsObject(String key) {
+	public @Nullable Object getValueAsObject(String key) {
 		CtExpression expr = getWrappedValue(key);
 
 		// no such value, per the contract of the method
@@ -291,7 +292,7 @@ public class CtAnnotationImpl<A extends Annotation> extends CtExpressionImpl<A> 
 	}
 
 
-	private CtExpression getValueAsExpression(String key) {
+	private @Nullable CtExpression getValueAsExpression(String key) {
 
 		// get specified field in annotation directly
 		CtExpression ret = this.elementValues.get(key);

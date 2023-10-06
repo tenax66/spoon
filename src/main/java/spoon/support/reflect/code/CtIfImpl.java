@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtCodeElement;
 import spoon.reflect.code.CtExpression;
@@ -90,7 +91,7 @@ public class CtIfImpl extends CtStatementImpl implements CtIf {
 	}
 
 	@Override
-	public Void S() {
+	public @Nullable Void S() {
 		return null;
 	}
 

@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.ParentNotInitializedException;
@@ -39,7 +40,7 @@ public class CtLocalVariableReferenceImpl<T>
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public CtLocalVariable<T> getDeclaration() {
+	public @Nullable CtLocalVariable<T> getDeclaration() {
 		// without a factory, we are not able to filter for local variables
 		final Factory factory = getFactory();
 		if (factory == null) {

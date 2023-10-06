@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.ModifierKind;
@@ -118,7 +119,7 @@ public class CtModifierHandler implements Serializable {
 		return this;
 	}
 
-	public ModifierKind getVisibility() {
+	public @Nullable ModifierKind getVisibility() {
 		if (isPublic()) {
 			return ModifierKind.PUBLIC;
 		}

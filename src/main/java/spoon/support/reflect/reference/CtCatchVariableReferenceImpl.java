@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.code.CtCatch;
 import spoon.reflect.code.CtCatchVariable;
 import spoon.reflect.declaration.CtElement;
@@ -25,7 +26,7 @@ public class CtCatchVariableReferenceImpl<T> extends CtVariableReferenceImpl<T> 
 	}
 
 	@Override
-	public CtCatchVariable<T> getDeclaration() {
+	public @Nullable CtCatchVariable<T> getDeclaration() {
 		CtElement element = this;
 		String name = getSimpleName();
 		CtCatchVariable var;

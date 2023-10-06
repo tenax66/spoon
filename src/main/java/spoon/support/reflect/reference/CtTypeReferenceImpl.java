@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.SpoonException;
 import spoon.reflect.annotations.MetamodelPropertyField;
@@ -236,7 +237,7 @@ public class CtTypeReferenceImpl<T> extends CtReferenceImpl implements CtTypeRef
 	}
 
 	@Override
-	public CtType<T> getTypeDeclaration() {
+	public @Nullable CtType<T> getTypeDeclaration() {
 		CtType<T> t = getFactory().Type().get(getQualifiedName());
 		if (t != null) {
 			return t;
@@ -421,7 +422,7 @@ public class CtTypeReferenceImpl<T> extends CtReferenceImpl implements CtTypeRef
 	}
 
 	@Override
-	public CtFieldReference<?> getDeclaredField(String name) {
+	public @Nullable CtFieldReference<?> getDeclaredField(String name) {
 		if (name == null) {
 			return null;
 		}
@@ -433,7 +434,7 @@ public class CtTypeReferenceImpl<T> extends CtReferenceImpl implements CtTypeRef
 	}
 
 	@Override
-	public CtFieldReference<?> getDeclaredOrInheritedField(String fieldName) {
+	public @Nullable CtFieldReference<?> getDeclaredOrInheritedField(String fieldName) {
 		CtType<?> t = getTypeDeclaration();
 		if (t != null) {
 			return t.getDeclaredOrInheritedField(fieldName);
@@ -489,7 +490,7 @@ public class CtTypeReferenceImpl<T> extends CtReferenceImpl implements CtTypeRef
 	}
 
 	@Override
-	public CtTypeReference<?> getSuperclass() {
+	public @Nullable CtTypeReference<?> getSuperclass() {
 		CtType<T> t = getTypeDeclaration();
 		if (t != null) {
 			return t.getSuperclass();
@@ -816,7 +817,7 @@ public class CtTypeReferenceImpl<T> extends CtReferenceImpl implements CtTypeRef
 	 * @param targetType
 	 * @return sourceType or last super class of sourceType, which extends from targetType and which is visible from sourceType or null if sourceType does not extends from targetType
 	 */
-	private static CtTypeReference<?> getLastVisibleSuperClassExtendingFrom(CtTypeReference<?> sourceType, CtTypeReference<?> targetType) {
+	private static @Nullable CtTypeReference<?> getLastVisibleSuperClassExtendingFrom(CtTypeReference<?> sourceType, CtTypeReference<?> targetType) {
 		String targetQN = targetType.getQualifiedName();
 		CtTypeReference<?> adept = sourceType;
 		CtTypeReference<?> type = sourceType;
@@ -857,7 +858,7 @@ public class CtTypeReferenceImpl<T> extends CtReferenceImpl implements CtTypeRef
 	}
 
 	@Override
-	public CtTypeParameter getTypeParameterDeclaration() {
+	public @Nullable CtTypeParameter getTypeParameterDeclaration() {
 
 		CtElement parent = this.getParent();
 

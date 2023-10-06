@@ -9,6 +9,7 @@ package spoon.support.sniper.internal;
 
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.path.CtRole;
@@ -93,7 +94,7 @@ abstract class AbstractSourceFragmentContextCollection extends AbstractSourceFra
 	/**
 	 * @return the suffix whitespaces at the end of collection of elements
 	 */
-	protected String getSuffixSpace() {
+	protected @Nullable String getSuffixSpace() {
 		if (childFragments.size() > 0) {
 			SourceFragment item = childFragments.get(childFragments.size() - 1);
 			if (isSpaceFragment(item)) {

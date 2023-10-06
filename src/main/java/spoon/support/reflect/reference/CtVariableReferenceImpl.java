@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.ModifierKind;
@@ -50,13 +51,13 @@ public abstract class CtVariableReferenceImpl<T> extends CtReferenceImpl impleme
 	}
 
 	@Override
-	protected AnnotatedElement getActualAnnotatedElement() {
+	protected @Nullable AnnotatedElement getActualAnnotatedElement() {
 		// this is never available through reflection
 		return null;
 	}
 
 	@Override
-	public CtVariable<T> getDeclaration() {
+	public @Nullable CtVariable<T> getDeclaration() {
 		return null;
 	}
 

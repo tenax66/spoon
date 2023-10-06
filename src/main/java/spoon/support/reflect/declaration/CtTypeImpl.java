@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.refactoring.Refactoring;
 import spoon.reflect.ModelElementContainerDefaultCapacities;
@@ -219,7 +220,7 @@ public abstract class CtTypeImpl<T> extends CtNamedElementImpl implements CtType
 	}
 
 	@Override
-	public CtField<?> getField(String name) {
+	public @Nullable CtField<?> getField(String name) {
 		for (CtTypeMember typeMember : typeMembers) {
 			if (typeMember instanceof CtField && ((CtField) typeMember).getSimpleName().equals(name)) {
 				return (CtField<?>) typeMember;
@@ -229,13 +230,13 @@ public abstract class CtTypeImpl<T> extends CtNamedElementImpl implements CtType
 	}
 
 	@Override
-	public CtFieldReference<?> getDeclaredField(String name) {
+	public @Nullable CtFieldReference<?> getDeclaredField(String name) {
 		CtField<?> field = getField(name);
 		return field != null ? getFactory().Field().createReference(field) : null;
 	}
 
 	@Override
-	public CtFieldReference<?> getDeclaredOrInheritedField(String fieldName) {
+	public @Nullable CtFieldReference<?> getDeclaredOrInheritedField(String fieldName) {
 		CtField<?> field = map(new AllTypeMembersFunction(CtField.class)).select(new NamedElementFilter<>(CtField.class, fieldName)).first();
 		return field == null ? null : field.getReference();
 	}
@@ -433,7 +434,7 @@ public abstract class CtTypeImpl<T> extends CtNamedElementImpl implements CtType
 	}
 
 	@Override
-	public CtPackage getPackage() {
+	public @Nullable CtPackage getPackage() {
 		if (parent instanceof CtPackage) {
 			return (CtPackage) getParent();
 		} else if (parent instanceof CtType) {
@@ -525,7 +526,7 @@ public abstract class CtTypeImpl<T> extends CtNamedElementImpl implements CtType
 
 	@Override
 	@DerivedProperty
-	public CtTypeReference<?> getSuperclass() {
+	public @Nullable CtTypeReference<?> getSuperclass() {
 		// overridden in subclasses.
 		return null;
 	}
@@ -698,7 +699,7 @@ public abstract class CtTypeImpl<T> extends CtNamedElementImpl implements CtType
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <R> CtMethod<R> getMethod(CtTypeReference<R> returnType, String name, CtTypeReference<?>... parameterTypes) {
+	public <R> @Nullable CtMethod<R> getMethod(CtTypeReference<R> returnType, String name, CtTypeReference<?>... parameterTypes) {
 		for (CtTypeMember typeMember : typeMembers) {
 			if (!(typeMember instanceof CtMethod)) {
 				continue;
@@ -724,7 +725,7 @@ public abstract class CtTypeImpl<T> extends CtNamedElementImpl implements CtType
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <R> CtMethod<R> getMethod(String name, CtTypeReference<?>... parameterTypes) {
+	public <R> @Nullable CtMethod<R> getMethod(String name, CtTypeReference<?>... parameterTypes) {
 		if (name == null) {
 			return null;
 		}

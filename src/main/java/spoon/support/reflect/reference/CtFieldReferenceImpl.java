@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.SpoonException;
 import spoon.reflect.annotations.MetamodelPropertyField;
@@ -53,7 +54,7 @@ public class CtFieldReferenceImpl<T> extends CtVariableReferenceImpl<T> implemen
 	}
 
 	@Override
-	public Member getActualField() {
+	public @Nullable Member getActualField() {
 		CtTypeReference<?> typeRef = getDeclaringType();
 		if (typeRef == null) {
 			throw new SpoonException("Declaring type of field " + getSimpleName() + " isn't defined");
@@ -86,7 +87,7 @@ public class CtFieldReferenceImpl<T> extends CtVariableReferenceImpl<T> implemen
 		return fromDeclaringType();
 	}
 
-	private CtField<T> fromDeclaringType() {
+	private @Nullable CtField<T> fromDeclaringType() {
 		if (declaringType == null) {
 			return null;
 		}
@@ -98,7 +99,7 @@ public class CtFieldReferenceImpl<T> extends CtVariableReferenceImpl<T> implemen
 	}
 
 	@Override
-	public CtField<T> getFieldDeclaration() {
+	public @Nullable CtField<T> getFieldDeclaration() {
 		if (declaringType == null) {
 			return null;
 		}

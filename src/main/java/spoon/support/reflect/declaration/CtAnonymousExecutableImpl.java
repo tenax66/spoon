@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.declaration.CtAnonymousExecutable;
 import spoon.reflect.declaration.CtExecutable;
@@ -55,7 +56,7 @@ public class CtAnonymousExecutableImpl extends CtExecutableImpl<Void> implements
 	}
 
 	@Override
-	public ModifierKind getVisibility() {
+	public @Nullable ModifierKind getVisibility() {
 		if (getModifiers().contains(ModifierKind.PUBLIC)) {
 			return ModifierKind.PUBLIC;
 		}

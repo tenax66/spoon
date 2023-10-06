@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.ModelElementContainerDefaultCapacities;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CaseKind;
@@ -43,7 +44,7 @@ public class CtCaseImpl<E> extends CtStatementImpl implements CtCase<E> {
 	}
 
 	@Override
-	public CtExpression<E> getCaseExpression() {
+	public @Nullable CtExpression<E> getCaseExpression() {
 		if (caseExpressions.isEmpty()) {
 			return null;
 		}

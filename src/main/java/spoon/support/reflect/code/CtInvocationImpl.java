@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtAbstractInvocation;
 import spoon.reflect.code.CtExpression;
@@ -158,7 +159,7 @@ public class CtInvocationImpl<T> extends CtTargetedExpressionImpl<T, CtExpressio
 
 	@Override
 	@DerivedProperty
-	public CtTypeReference<T> getType() {
+	public @Nullable CtTypeReference<T> getType() {
 		return getExecutable() == null ? null : getExecutable().getType();
 	}
 

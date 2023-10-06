@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtFormalTypeDeclarer;
@@ -91,13 +92,13 @@ public class CtTypeParameterReferenceImpl extends CtTypeReferenceImpl<Object> im
 	}
 
 	@Override
-	protected AnnotatedElement getActualAnnotatedElement() {
+	protected @Nullable AnnotatedElement getActualAnnotatedElement() {
 		// this is never annotated
 		return null;
 	}
 
 	@Override
-	public CtTypeParameter getDeclaration() {
+	public @Nullable CtTypeParameter getDeclaration() {
 		if (!isParentInitialized()) {
 			return null;
 		}

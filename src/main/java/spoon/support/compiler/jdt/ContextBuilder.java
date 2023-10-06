@@ -14,6 +14,7 @@ import org.eclipse.jdt.internal.compiler.ast.TypeDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.TypeReference;
 import org.eclipse.jdt.internal.compiler.lookup.FieldBinding;
 import org.eclipse.jdt.internal.compiler.lookup.ReferenceBinding;
+import org.jspecify.annotations.Nullable;
 import spoon.compiler.Environment;
 import spoon.reflect.code.CtCatchVariable;
 import spoon.reflect.code.CtConstructorCall;
@@ -161,7 +162,7 @@ public class ContextBuilder {
 		return stack.peek().node;
 	}
 
-	CtElement getContextElementOnLevel(int level) {
+	@Nullable CtElement getContextElementOnLevel(int level) {
 		for (ASTPair pair : stack) {
 			if (level == 0) {
 				return pair.element;
@@ -180,7 +181,7 @@ public class ContextBuilder {
 		return null;
 	}
 
-	ASTPair getParentContextOfType(Class<? extends CtElement> clazz) {
+	@Nullable ASTPair getParentContextOfType(Class<? extends CtElement> clazz) {
 		for (ASTPair pair : stack) {
 			if (clazz.isInstance(pair.element)) {
 				return pair;
@@ -190,7 +191,7 @@ public class ContextBuilder {
 	}
 
 	@SuppressWarnings("unchecked")
-	<T> CtLocalVariable<T> getLocalVariableDeclaration(final String name) {
+	<T> @Nullable CtLocalVariable<T> getLocalVariableDeclaration(final String name) {
 		final Class<CtLocalVariable<T>> clazz = (Class<CtLocalVariable<T>>)
 				jdtTreeBuilder.getFactory().Core().createLocalVariable().getClass();
 		final CtLocalVariable<T> localVariable =
@@ -205,7 +206,7 @@ public class ContextBuilder {
 	}
 
 	@SuppressWarnings("unchecked")
-	<T> CtCatchVariable<T> getCatchVariableDeclaration(final String name) {
+	<T> @Nullable CtCatchVariable<T> getCatchVariableDeclaration(final String name) {
 		final Class<CtCatchVariable<T>> clazz = (Class<CtCatchVariable<T>>)
 				jdtTreeBuilder.getFactory().Core().createCatchVariable().getClass();
 		final CtCatchVariable<T> catchVariable =
@@ -219,7 +220,7 @@ public class ContextBuilder {
 		return catchVariable;
 	}
 
-	<T> CtVariable<T> getVariableDeclaration(final String name) {
+	<T> @Nullable CtVariable<T> getVariableDeclaration(final String name) {
 		final CtVariable<T> variable = this.<T, CtVariable<T>>getVariableDeclaration(name, null);
 		if (variable == null) {
 			// note: this happens when using the new try(vardelc) structure

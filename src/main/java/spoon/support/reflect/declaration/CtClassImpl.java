@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.SpoonModelBuilder.InputType;
 import spoon.reflect.annotations.MetamodelPropertyField;
@@ -75,7 +76,7 @@ public class CtClassImpl<T> extends CtTypeImpl<T> implements CtClass<T> {
 	}
 
 	@Override
-	public CtConstructor<T> getConstructor(CtTypeReference<?>... parameterTypes) {
+	public @Nullable CtConstructor<T> getConstructor(CtTypeReference<?>... parameterTypes) {
 		for (CtTypeMember typeMember : getTypeMembers()) {
 			if (!(typeMember instanceof CtConstructor)) {
 				continue;
@@ -220,7 +221,7 @@ public class CtClassImpl<T> extends CtTypeImpl<T> implements CtClass<T> {
 	}
 
 	@Override
-	public String getLabel() {
+	public @Nullable String getLabel() {
 		return null;
 	}
 

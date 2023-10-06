@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtTypedElement;
@@ -81,7 +82,7 @@ public abstract class CtExpressionImpl<T> extends CtCodeElementImpl implements C
 	}
 
 	@Override
-	public T S() {
+	public @Nullable T S() {
 		return null;
 	}
 

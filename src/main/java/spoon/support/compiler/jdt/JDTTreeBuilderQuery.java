@@ -23,6 +23,7 @@ import org.eclipse.jdt.internal.compiler.lookup.FieldBinding;
 import org.eclipse.jdt.internal.compiler.lookup.ProblemFieldBinding;
 import org.eclipse.jdt.internal.compiler.lookup.ReferenceBinding;
 import org.eclipse.jdt.internal.compiler.lookup.TypeBinding;
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.UnaryOperatorKind;
 import spoon.reflect.declaration.CtAnnotatedElementType;
@@ -109,7 +110,7 @@ class JDTTreeBuilderQuery {
 	 * 		Search the type in imports.
 	 * @return qualified name of the expected type.
 	 */
-	static String searchType(String typeName, ImportReference[] imports) {
+	static @Nullable String searchType(String typeName, ImportReference[] imports) {
 		if (typeName == null || imports == null) {
 			return null;
 		}
@@ -131,7 +132,7 @@ class JDTTreeBuilderQuery {
 	 * 		Search the package expected in units.
 	 * @return import reference which correspond to the package expected.
 	 */
-	static ImportReference searchPackage(char[][] packageName, CompilationUnitDeclaration[] unitsToProcess) {
+	static @Nullable ImportReference searchPackage(char[][] packageName, CompilationUnitDeclaration[] unitsToProcess) {
 		for (CompilationUnitDeclaration unit : unitsToProcess) {
 			final ImportReference currentPackage = unit.currentPackage;
 			if (currentPackage == null) {
@@ -249,7 +250,7 @@ class JDTTreeBuilderQuery {
 	 * 		Identifier of the unary operator.
 	 * @return enum value of {@link UnaryOperatorKind}.
 	 */
-	static UnaryOperatorKind getUnaryOperator(int operator) {
+	static @Nullable UnaryOperatorKind getUnaryOperator(int operator) {
 		switch (operator) {
 		case OperatorIds.PLUS:
 			return UnaryOperatorKind.POS;
@@ -270,7 +271,7 @@ class JDTTreeBuilderQuery {
 	 * 		Identifier of the binary operator.
 	 * @return enum value of {@link BinaryOperatorKind}.
 	 */
-	static BinaryOperatorKind getBinaryOperatorKind(int operator) {
+	static @Nullable BinaryOperatorKind getBinaryOperatorKind(int operator) {
 		switch (operator) {
 		case OperatorIds.EQUAL_EQUAL:
 			return BinaryOperatorKind.EQ;

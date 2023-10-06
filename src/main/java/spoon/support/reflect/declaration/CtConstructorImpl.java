@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.declaration.CtConstructor;
 import spoon.reflect.declaration.CtFormalTypeDeclarer;
@@ -67,7 +68,7 @@ public class CtConstructorImpl<T> extends CtExecutableImpl<T> implements CtConst
 
 	@Override
 	@DerivedProperty
-	public CtTypeReference<T> getType() {
+	public @Nullable CtTypeReference<T> getType() {
 		if (getDeclaringType() == null) {
 			return null;
 		}

@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtBodyHolder;
@@ -134,7 +135,7 @@ public class CtTryImpl extends CtStatementImpl implements CtTry {
 	}
 
 	@Override
-	public Void S() {
+	public @Nullable Void S() {
 		return null;
 	}
 

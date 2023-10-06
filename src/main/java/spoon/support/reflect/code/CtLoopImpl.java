@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtBodyHolder;
@@ -51,7 +52,7 @@ public abstract class CtLoopImpl extends CtStatementImpl implements CtLoop {
 	}
 
 	@Override
-	public Void S() {
+	public @Nullable Void S() {
 		return null;
 	}
 

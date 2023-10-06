@@ -7,6 +7,7 @@
  */
 package spoon.support.template;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.code.CtArrayAccess;
 import spoon.reflect.code.CtExpression;
@@ -49,7 +50,7 @@ public abstract class Parameters {
 	 * Gets the index of a one-dimension array (helper).
 	 */
 	@SuppressWarnings("unchecked")
-	public static Integer getIndex(CtExpression<?> e) {
+	public static @Nullable Integer getIndex(CtExpression<?> e) {
 		if (e.getParent() instanceof CtArrayAccess) {
 			CtExpression<Integer> indexExpression = ((CtArrayAccess<?, CtExpression<Integer>>) e.getParent()).getIndexExpression();
 			return ((CtLiteral<Integer>) indexExpression).getValue();
@@ -80,7 +81,7 @@ public abstract class Parameters {
 		}
 		return tparamValue;
 	}
-	private static Object getValue(Template<?> template, String parameterName, Field rtField) {
+	private static @Nullable Object getValue(Template<?> template, String parameterName, @Nullable Field rtField) {
 		if (rtField == null) {
 			throw new UndefinedParameterException();
 		}
@@ -102,7 +103,7 @@ public abstract class Parameters {
 
 	static Map<Template<?>, Map<String, Object>> finals = new HashMap<>();
 
-	public static CtField<?> getParameterField(CtClass<? extends Template<?>> templateClass, String parameterName) {
+	public static @Nullable CtField<?> getParameterField(CtClass<? extends Template<?>> templateClass, String parameterName) {
 		for (CtTypeMember typeMember : templateClass.getTypeMembers()) {
 			if (!(typeMember instanceof CtField)) {
 				continue;

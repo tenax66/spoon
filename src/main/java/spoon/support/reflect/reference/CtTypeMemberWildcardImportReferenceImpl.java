@@ -13,6 +13,7 @@ import java.lang.annotation.Annotation;
 import java.util.Collections;
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.declaration.CtAnnotation;
 import spoon.reflect.declaration.CtElement;
@@ -56,7 +57,7 @@ public class CtTypeMemberWildcardImportReferenceImpl extends CtElementImpl imple
 	}
 
 	@Override
-	public String getSimpleName() {
+	public @Nullable String getSimpleName() {
 		return typeReference == null ? null : typeReference.getQualifiedName() + ".*";
 	}
 
@@ -78,7 +79,7 @@ public class CtTypeMemberWildcardImportReferenceImpl extends CtElementImpl imple
 
 	@Override
 	@DerivedProperty
-	public CtType<?> getDeclaration() {
+	public @Nullable CtType<?> getDeclaration() {
 		return typeReference == null ? null : typeReference.getTypeDeclaration();
 	}
 

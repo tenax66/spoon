@@ -31,7 +31,7 @@ public abstract class TokenPrinterEvent implements PrinterEvent {
 	}
 
 	@Override
-	public CtRole getRole() {
+	public @Nullable CtRole getRole() {
 		if (type == TokenType.COMMENT) {
 			return CtRole.COMMENT;
 		}

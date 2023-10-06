@@ -7,6 +7,7 @@
  */
 package spoon.support.compiler;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.compiler.SpoonFile;
 import spoon.compiler.SpoonFolder;
@@ -115,7 +116,7 @@ public class ZipFile implements SpoonFile {
 	}
 
 	@Override
-	public File toFile() {
+	public @Nullable File toFile() {
 		return null;
 	}
 

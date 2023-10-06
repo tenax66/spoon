@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.SpoonException;
 import spoon.compiler.SpoonFile;
@@ -65,7 +66,7 @@ public class FileSystemFolder implements SpoonFolder {
 	}
 
 	@Override
-	public SpoonFolder getParent() {
+	public @Nullable SpoonFolder getParent() {
 		try {
 			return SpoonResourceHelper.createFolder(file.getParentFile());
 		} catch (FileNotFoundException e) {

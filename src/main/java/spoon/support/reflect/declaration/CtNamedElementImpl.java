@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.declaration.CtNamedElement;
 import spoon.reflect.factory.Factory;
@@ -23,7 +24,7 @@ public abstract class CtNamedElementImpl extends CtElementImpl implements CtName
 	String simpleName = "";
 
 	@Override
-	public CtReference getReference() {
+	public @Nullable CtReference getReference() {
 		return null;
 	}
 

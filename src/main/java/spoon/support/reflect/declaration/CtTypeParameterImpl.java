@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.declaration.CtConstructor;
@@ -120,7 +121,7 @@ public class CtTypeParameterImpl extends CtTypeImpl<Object> implements CtTypePar
 	}
 
 	@Override
-	public CtField<?> getField(String name) {
+	public @Nullable CtField<?> getField(String name) {
 		return null;
 	}
 
@@ -152,7 +153,7 @@ public class CtTypeParameterImpl extends CtTypeImpl<Object> implements CtTypePar
 	}
 
 	@Override
-	public <N extends CtType<?>> N getNestedType(String name) {
+	public <N extends CtType<?>> @Nullable N getNestedType(String name) {
 		return null;
 	}
 
@@ -164,7 +165,7 @@ public class CtTypeParameterImpl extends CtTypeImpl<Object> implements CtTypePar
 
 	@Override
 	@DerivedProperty
-	public CtPackage getPackage() {
+	public @Nullable CtPackage getPackage() {
 		return null;
 	}
 
@@ -212,7 +213,7 @@ public class CtTypeParameterImpl extends CtTypeImpl<Object> implements CtTypePar
 	}
 
 	@Override
-	public ModifierKind getVisibility() {
+	public @Nullable ModifierKind getVisibility() {
 		return null;
 	}
 
@@ -339,12 +340,12 @@ public class CtTypeParameterImpl extends CtTypeImpl<Object> implements CtTypePar
 	}
 
 	@Override
-	public <R> CtMethod<R> getMethod(CtTypeReference<R> returnType, String name, CtTypeReference<?>... parameterTypes) {
+	public <R> @Nullable CtMethod<R> getMethod(CtTypeReference<R> returnType, String name, CtTypeReference<?>... parameterTypes) {
 		return null;
 	}
 
 	@Override
-	public <R> CtMethod<R> getMethod(String name, CtTypeReference<?>... parameterTypes) {
+	public <R> @Nullable CtMethod<R> getMethod(String name, CtTypeReference<?>... parameterTypes) {
 		return null;
 	}
 

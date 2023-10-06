@@ -412,7 +412,7 @@ public class SpoonPom implements SpoonResource {
 		return Integer.parseInt((version.contains(".") ? version.substring(2) : version));
 	}
 
-	private String getSourceVersion(BuildBase build) {
+	private @Nullable String getSourceVersion(BuildBase build) {
 		for (Plugin plugin : build.getPlugins()) {
 			if (!"maven-compiler-plugin".equals(plugin.getArtifactId())) {
 				continue;
@@ -653,7 +653,7 @@ public class SpoonPom implements SpoonResource {
 	 * @return the parent directory
 	 */
 	@Override
-	public SpoonFolder getParent() {
+	public @Nullable SpoonFolder getParent() {
 		try {
 			return SpoonResourceHelper.createFolder(directory);
 		} catch (FileNotFoundException e) {

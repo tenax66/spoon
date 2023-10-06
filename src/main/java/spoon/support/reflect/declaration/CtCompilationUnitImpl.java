@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.cu.CompilationUnit;
@@ -197,7 +198,7 @@ public class CtCompilationUnitImpl extends CtElementImpl implements CtCompilatio
 
 	@Override
 	@DerivedProperty
-	public CtModule getDeclaredModule() {
+	public @Nullable CtModule getDeclaredModule() {
 		return this.moduleReference != null ? this.moduleReference.getDeclaration() : null;
 	}
 
@@ -414,7 +415,7 @@ public class CtCompilationUnitImpl extends CtElementImpl implements CtCompilatio
 	}
 
 	@Override
-	public CtElement getParent() throws ParentNotInitializedException {
+	public @Nullable CtElement getParent() throws ParentNotInitializedException {
 		return null;
 	}
 

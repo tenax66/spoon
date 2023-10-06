@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.declaration.CtAnnotationMethod;
 import spoon.reflect.declaration.CtAnnotationType;
 import spoon.reflect.declaration.CtFormalTypeDeclarer;
@@ -50,7 +51,7 @@ public class CtAnnotationTypeImpl<T extends Annotation> extends CtTypeImpl<T> im
 
 	@Override
 	@DerivedProperty
-	public CtTypeReference<?> getSuperclass() {
+	public @Nullable CtTypeReference<?> getSuperclass() {
 		return null;
 	}
 

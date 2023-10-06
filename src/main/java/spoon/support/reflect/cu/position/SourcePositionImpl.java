@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.cu.position;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.cu.CompilationUnit;
 import spoon.reflect.cu.SourcePosition;
@@ -133,7 +134,7 @@ public class SourcePositionImpl implements SourcePosition {
 	}
 
 	@Override
-	public File getFile() {
+	public @Nullable File getFile() {
 		return compilationUnit == null ? null : compilationUnit.getFile();
 	}
 

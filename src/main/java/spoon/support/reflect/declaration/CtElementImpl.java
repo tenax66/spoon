@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.reflect.ModelElementContainerDefaultCapacities;
@@ -133,7 +134,7 @@ public abstract class CtElementImpl implements CtElement {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <A extends Annotation> A getAnnotation(Class<A> annotationType) {
+	public <A extends Annotation> @Nullable A getAnnotation(Class<A> annotationType) {
 		CtType annot = getFactory().Annotation().get(annotationType);
 		for (CtAnnotation<? extends Annotation> a : getAnnotations()) {
 			if (a.getAnnotationType().getQualifiedName().equals(annot.getQualifiedName())) {
@@ -156,7 +157,7 @@ public abstract class CtElementImpl implements CtElement {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <A extends Annotation> CtAnnotation<A> getAnnotation(CtTypeReference<A> annotationType) {
+	public <A extends Annotation> @Nullable CtAnnotation<A> getAnnotation(CtTypeReference<A> annotationType) {
 		for (CtAnnotation<? extends Annotation> a : getAnnotations()) {
 			if (a.getAnnotationType().equals(annotationType)) {
 				return (CtAnnotation<A>) a;
@@ -376,7 +377,7 @@ public abstract class CtElementImpl implements CtElement {
 	}
 
 	@Override
-	public <P extends CtElement> P getParent(Class<P> parentType) {
+	public <P extends CtElement> @Nullable P getParent(Class<P> parentType) {
 		CtElement current = this;
 		while (current.isParentInitialized()) {
 			current = current.getParent();
@@ -390,7 +391,7 @@ public abstract class CtElementImpl implements CtElement {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <E extends CtElement> E getParent(Filter<E> filter) {
+	public <E extends CtElement> @Nullable E getParent(Filter<E> filter) {
 		CtElement current = this;
 		while (current.isParentInitialized()) {
 			current = current.getParent();
@@ -416,7 +417,7 @@ public abstract class CtElementImpl implements CtElement {
 	}
 
 	@Override
-	public CtRole getRoleInParent() {
+	public @Nullable CtRole getRoleInParent() {
 		if (isParentInitialized()) {
 			EarlyTerminatingScanner<CtRole> ets = new EarlyTerminatingScanner<CtRole>() {
 				@Override
@@ -487,7 +488,7 @@ public abstract class CtElementImpl implements CtElement {
 	}
 
 	@Override
-	public Object getMetadata(String key) {
+	public @Nullable Object getMetadata(String key) {
 		if (metadata == null) {
 			return null;
 		}

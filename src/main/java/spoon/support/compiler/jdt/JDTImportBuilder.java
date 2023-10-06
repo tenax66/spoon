@@ -11,6 +11,7 @@ import org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.eclipse.jdt.internal.compiler.env.ICompilationUnit;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.cu.CompilationUnit;
 import spoon.reflect.declaration.CtImport;
 import spoon.reflect.declaration.CtMethod;
@@ -164,7 +165,7 @@ class JDTImportBuilder {
 		return factory.Package().get(packageName);
 	}
 
-	private CtType getOrLoadClass(String className) {
+	private @Nullable CtType getOrLoadClass(String className) {
 		CtType klass = this.factory.Type().get(className);
 
 		if (klass == null) {

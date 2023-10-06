@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtExpression;
@@ -127,7 +128,7 @@ public class CtAssignmentImpl<T, A extends T> extends CtStatementImpl implements
 	}
 
 	@Override
-	public T S() {
+	public @Nullable T S() {
 		return null;
 	}
 

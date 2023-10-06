@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.ModelElementContainerDefaultCapacities;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtCatchVariable;
@@ -52,7 +53,7 @@ public class CtCatchVariableImpl<T> extends CtCodeElementImpl implements CtCatch
 
 	@Override
 	@DerivedProperty
-	public CtExpression<T> getDefaultExpression() {
+	public @Nullable CtExpression<T> getDefaultExpression() {
 		return null;
 	}
 
@@ -69,7 +70,7 @@ public class CtCatchVariableImpl<T> extends CtCodeElementImpl implements CtCatch
 	@SuppressWarnings("unchecked")
 	@Override
 	@DerivedProperty
-	public CtTypeReference<T> getType() {
+	public @Nullable CtTypeReference<T> getType() {
 		if (types.isEmpty()) {
 			return null;
 		} else if (types.size() == 1) {
@@ -205,7 +206,7 @@ public class CtCatchVariableImpl<T> extends CtCodeElementImpl implements CtCatch
 	}
 
 	@Override
-	public ModifierKind getVisibility() {
+	public @Nullable ModifierKind getVisibility() {
 		if (getModifiers().contains(ModifierKind.PUBLIC)) {
 			return ModifierKind.PUBLIC;
 		}

@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.SpoonException;
 import spoon.compiler.SpoonFile;
@@ -54,7 +55,7 @@ public class FileSystemFile implements SpoonFile {
 	}
 
 	@Override
-	public SpoonFolder getParent() {
+	public @Nullable SpoonFolder getParent() {
 		try {
 			return SpoonResourceHelper.createFolder(file.getParentFile());
 		} catch (FileNotFoundException e) {

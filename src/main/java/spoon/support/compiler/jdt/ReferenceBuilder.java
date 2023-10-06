@@ -132,7 +132,7 @@ public class ReferenceBuilder {
 	<T> CtTypeReference<T> buildTypeReference(TypeReference type, Scope scope) {
 		return buildTypeReference(type, scope, false);
 	}
-	<T> CtTypeReference<T> buildTypeReference(TypeReference type, Scope scope, boolean isTypeCast) {
+	<T> @Nullable CtTypeReference<T> buildTypeReference(TypeReference type, Scope scope, boolean isTypeCast) {
 		if (type == null) {
 			return null;
 		}
@@ -279,7 +279,7 @@ public class ReferenceBuilder {
 	 * @param listener      Listener to know if we must build the type reference.
 	 * @return a type reference.
 	 */
-	<T> CtTypeReference<T> getQualifiedTypeReference(char[][] tokens, TypeBinding receiverType, ReferenceBinding enclosingType, JDTTreeBuilder.OnAccessListener listener) {
+	<T> @Nullable CtTypeReference<T> getQualifiedTypeReference(char[][] tokens, TypeBinding receiverType, ReferenceBinding enclosingType, JDTTreeBuilder.OnAccessListener listener) {
 		if (enclosingType != null && Collections.disjoint(PUBLIC_PROTECTED, JDTTreeBuilderQuery.getModifiers(enclosingType.modifiers, false, ModifierTarget.NONE))) {
 			String access = "";
 			int i = 0;
@@ -378,7 +378,7 @@ public class ReferenceBuilder {
 								// PackageBinding was a class instead of abstract class in earlier jdt versions.
 								// To circumvent this change to an abstract class, an anonymous class is used here.
 								@Override
-								public PlainPackageBinding getIncarnation(ModuleBinding arg0) {
+								public @Nullable PlainPackageBinding getIncarnation(ModuleBinding arg0) {
 									// this method returns always null, because we dont know the enclosingModule here.
 									// Link to original method from PlainPackageBinding:
 									// https://github.com/eclipse/eclipse.jdt.core/blob/master/org.eclipse.jdt.core/compiler/org/eclipse/jdt/internal/compiler/lookup/PlainPackageBinding.java#L43
@@ -414,7 +414,7 @@ public class ReferenceBuilder {
 		return getExecutableReference(exec, -1, -1);
 	}
 
-	<T> CtExecutableReference<T> getExecutableReference(MethodBinding exec, int sourceStart, int sourceEnd) {
+	<T> @Nullable CtExecutableReference<T> getExecutableReference(MethodBinding exec, int sourceStart, int sourceEnd) {
 		if (exec == null) {
 			return null;
 		}
@@ -718,7 +718,7 @@ public class ReferenceBuilder {
 	 * Returns a complete Spoon AST when the name is correct, otherwise a spoon type
 	 * reference with a name that correspond to the name of the JDT type reference.
 	 */
-	<T> CtTypeReference<T> getTypeReference(TypeReference ref) {
+	<T> @Nullable CtTypeReference<T> getTypeReference(TypeReference ref) {
 		if (ref == null) {
 			return null;
 		}
@@ -771,7 +771,7 @@ public class ReferenceBuilder {
 	 * Try to build a CtTypeReference from a simple name with specified generic types but
 	 * returns null if the name doesn't correspond to a type (not start by an upper case).
 	 */
-	public <T> CtTypeReference<T> getTypeReference(String name) {
+	public <T> @Nullable CtTypeReference<T> getTypeReference(String name) {
 		CtTypeReference<T> main = null;
 		if (name.matches(".*(<.+>)")) {
 			Pattern pattern = Pattern.compile("([^<]+)<(.+)>");
@@ -844,7 +844,7 @@ public class ReferenceBuilder {
 	/**
 	 * @param resolveGeneric if true then it never returns CtTypeParameterReference, but it's superClass instead
 	 */
-	<T> CtTypeReference<T> getTypeReference(TypeBinding binding, boolean resolveGeneric) {
+	<T> @Nullable CtTypeReference<T> getTypeReference(TypeBinding binding, boolean resolveGeneric) {
 		if (binding == null) {
 			return null;
 		}
@@ -964,7 +964,7 @@ public class ReferenceBuilder {
 	/**
 	 * Get the type reference for a type argument binding. May return null when called recursively.
 	 */
-	private CtTypeReference<?> getTypeReferenceFromTypeArgument(TypeBinding typeArgBinding) {
+	private @Nullable CtTypeReference<?> getTypeReferenceFromTypeArgument(TypeBinding typeArgBinding) {
 		if (bindingCache.containsKey(typeArgBinding)) {
 			return getCtCircularTypeReference(typeArgBinding);
 		} else if (exploringParameterizedBindings.containsKey(typeArgBinding)) {
@@ -1233,7 +1233,7 @@ public class ReferenceBuilder {
 	}
 
 	@SuppressWarnings("unchecked")
-	<T> CtVariableReference<T> getVariableReference(VariableBinding varbin) {
+	<T> @Nullable CtVariableReference<T> getVariableReference(VariableBinding varbin) {
 
 		if (varbin instanceof FieldBinding) {
 			return getVariableReference(((FieldBinding) varbin).declaringClass, (FieldBinding) varbin);
@@ -1343,7 +1343,7 @@ public class ReferenceBuilder {
 	 * @param singleNameReference Name of the variable access.
 	 * @return executable reference which corresponds to the lambda.
 	 */
-	public CtExecutableReference<?> getLambdaExecutableReference(SingleNameReference singleNameReference) {
+	public @Nullable CtExecutableReference<?> getLambdaExecutableReference(SingleNameReference singleNameReference) {
 		ASTPair potentialLambda = null;
 		for (ASTPair astPair : jdtTreeBuilder.getContextBuilder().getAllContexts()) {
 			if (astPair.node instanceof LambdaExpression) {

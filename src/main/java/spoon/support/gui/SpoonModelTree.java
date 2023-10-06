@@ -35,6 +35,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.factory.Factory;
@@ -284,7 +285,7 @@ public class SpoonModelTree extends JFrame implements KeyListener,
 	}
 
 	/** move to the next node matching the search criterion */
-	public DefaultMutableTreeNode next() {
+	public @Nullable DefaultMutableTreeNode next() {
 		DefaultMutableTreeNode current;
 		while ((enume != null) && enume.hasMoreElements()) {
 			current = (DefaultMutableTreeNode) enume.nextElement();
@@ -298,7 +299,7 @@ public class SpoonModelTree extends JFrame implements KeyListener,
 	}
 
 	/** shows a dialog to enter the value to search for in the AST */
-	public DefaultMutableTreeNode search() {
+	public @Nullable DefaultMutableTreeNode search() {
 		searchValue = JOptionPane.showInputDialog(this,
 				"Enter value to search:", "Search");
 
@@ -316,7 +317,7 @@ public class SpoonModelTree extends JFrame implements KeyListener,
 	}
 
 	/** expand all AST nodes in the GUI */
-	public DefaultMutableTreeNode expandAll(final DefaultMutableTreeNode node) {
+	public @Nullable DefaultMutableTreeNode expandAll(final DefaultMutableTreeNode node) {
 		if (node == null || node.isLeaf()) {
 			return null;
 		}

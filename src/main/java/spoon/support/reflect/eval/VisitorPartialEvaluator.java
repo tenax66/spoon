@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.eval;
 
+import org.jspecify.annotations.Nullable;
 import spoon.SpoonException;
 import spoon.reflect.code.CtAnnotationFieldAccess;
 import spoon.reflect.code.CtAssignment;
@@ -95,7 +96,7 @@ public class VisitorPartialEvaluator extends CtScanner implements PartialEvaluat
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <R extends CtElement> R evaluate(R element) {
+	public <R extends CtElement> @Nullable R evaluate(R element) {
 		if (element == null) {
 			return null;
 		}

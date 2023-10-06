@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.code;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldAccess;
@@ -37,7 +38,7 @@ public abstract class CtFieldAccessImpl<T> extends CtVariableAccessImpl<T> imple
 	}
 
 	@Override
-	public CtFieldReference<T> getVariable() {
+	public @Nullable CtFieldReference<T> getVariable() {
 		if (variable != null) {
 			return (CtFieldReference<T>) variable;
 		}

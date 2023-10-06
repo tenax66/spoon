@@ -8,6 +8,7 @@
 package spoon.support;
 
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import spoon.Launcher;
 import spoon.OutputType;
@@ -216,7 +217,7 @@ public class StandardEnvironment implements Serializable, Environment {
 	transient Map<String, ProcessorProperties> processorProperties = new TreeMap<>();
 
 	@Override
-	public ProcessorProperties getProcessorProperties(String processorName) {
+	public @Nullable ProcessorProperties getProcessorProperties(String processorName) {
 		if (processorProperties.containsKey(processorName)) {
 			return processorProperties.get(processorName);
 		}

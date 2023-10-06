@@ -185,7 +185,7 @@ public class JDTTreeBuilderHelper {
 	 * @return A {@link CtVariableAccess} if {@code singleNameReference} points to a variable
 	 * 		visible in current scope, {@code null} otherwise.
 	 */
-	<T> CtVariableAccess<T> createVariableAccessNoClasspath(SingleNameReference singleNameReference) {
+	<T> @Nullable CtVariableAccess<T> createVariableAccessNoClasspath(SingleNameReference singleNameReference) {
 		final CoreFactory coreFactory = jdtTreeBuilder.getFactory().Core();
 		final ContextBuilder contextBuilder = jdtTreeBuilder.getContextBuilder();
 		final ReferenceBuilder referenceBuilder = jdtTreeBuilder.getReferencesBuilder();

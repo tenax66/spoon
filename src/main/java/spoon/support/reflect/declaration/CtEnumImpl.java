@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtNewClass;
 import spoon.reflect.declaration.CtEnum;
@@ -91,7 +92,7 @@ public class CtEnumImpl<T extends Enum<?>> extends CtClassImpl<T> implements CtE
 	}
 
 	@Override
-	public CtEnumValue<?> getEnumValue(String name) {
+	public @Nullable CtEnumValue<?> getEnumValue(String name) {
 		for (CtEnumValue<?> enumValue : enumValues) {
 			if (enumValue.getSimpleName().equals(name)) {
 				return enumValue;

@@ -129,7 +129,7 @@ public class ElementSourceFragment implements SourceFragment {
 	 * @param end end offset (after last character) relative to compilation unit
 	 * @return source code of this Fragment between start/end offsets
 	 */
-	public String getSourceCode(int start, int end) {
+	public @Nullable String getSourceCode(int start, int end) {
 		String src = getOriginalSourceCode();
 		if (src != null) {
 			return src.substring(start, end);
@@ -259,7 +259,7 @@ public class ElementSourceFragment implements SourceFragment {
 				|| parent instanceof CtCompilationUnit;
 	}
 
-	private RoleHandler getRoleHandler(CtRole roleInParent, SourcePositionHolder otherElement) {
+	private @Nullable RoleHandler getRoleHandler(CtRole roleInParent, SourcePositionHolder otherElement) {
 		SourcePositionHolder parent = element;
 		if (parent == null) {
 			if (otherElement instanceof CtElement) {
@@ -397,7 +397,7 @@ public class ElementSourceFragment implements SourceFragment {
 	 *
 	 * @return {@link ElementSourceFragment} which represents the root of the CtElement whose sources are in interval [start, end]
 	 */
-	public ElementSourceFragment getSourceFragmentOf(SourcePositionHolder element, int start, int end) {
+	public @Nullable ElementSourceFragment getSourceFragmentOf(SourcePositionHolder element, int start, int end) {
 		int myEnd = getEnd();
 		if (myEnd <= start) {
 			//search in next sibling
@@ -548,7 +548,7 @@ public class ElementSourceFragment implements SourceFragment {
 	 * treated as whitespace, the suffix space must be considered part of the comment, or we
 	 * sometimes fail to print it.
 	 */
-	private SourceFragment removeNonCommentSuffixSpace(List<SourceFragment> list) {
+	private @Nullable SourceFragment removeNonCommentSuffixSpace(List<SourceFragment> list) {
 		if (list.size() > 0) {
 			SourceFragment lastChild = list.get(list.size() - 1);
 			SourceFragment secondLastChild = list.size() > 1 ? list.get(list.size() - 2) : null;
@@ -752,7 +752,7 @@ public class ElementSourceFragment implements SourceFragment {
 		return o - start;
 	}
 
-	private String getOriginalSourceCode() {
+	private @Nullable String getOriginalSourceCode() {
 		CompilationUnit cu = getSourcePosition().getCompilationUnit();
 		if (cu != null) {
 			return cu.getOriginalSourceCode();
@@ -806,7 +806,7 @@ public class ElementSourceFragment implements SourceFragment {
 	/**
 	 * @return role of the element of this fragment in scope of it's parent
 	 */
-	public CtRole getRoleInParent() {
+	public @Nullable CtRole getRoleInParent() {
 		return roleHandlerInParent != null ? roleHandlerInParent.getRole() : null;
 	}
 

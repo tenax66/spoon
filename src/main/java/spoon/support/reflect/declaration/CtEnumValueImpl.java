@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtEnumValue;
 import spoon.reflect.visitor.CtVisitor;
@@ -25,7 +26,7 @@ public class CtEnumValueImpl<T> extends CtFieldImpl<T> implements CtEnumValue<T>
 
 	@DerivedProperty
 	@Override
-	public CtExpression<T> getAssignment() {
+	public @Nullable CtExpression<T> getAssignment() {
 		return null;
 	}
 }

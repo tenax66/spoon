@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.SpoonException;
 import spoon.reflect.annotations.MetamodelPropertyField;
@@ -89,7 +90,7 @@ public class CtExecutableReferenceImpl<T> extends CtReferenceImpl implements CtE
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public CtExecutable<T> getDeclaration() {
+	public @Nullable CtExecutable<T> getDeclaration() {
 		final CtTypeReference<?> typeRef = getDeclaringType();
 		if (typeRef == null || typeRef.getDeclaration() == null) {
 			return null;
@@ -98,7 +99,7 @@ public class CtExecutableReferenceImpl<T> extends CtReferenceImpl implements CtE
 	}
 
 	@Override
-	public CtExecutable<T> getExecutableDeclaration() {
+	public @Nullable CtExecutable<T> getExecutableDeclaration() {
 		CtTypeReference<?> declaringType = getDeclaringType();
 		if (declaringType == null) {
 			return null;
@@ -190,7 +191,7 @@ public class CtExecutableReferenceImpl<T> extends CtReferenceImpl implements CtE
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <S extends T> CtExecutableReference<S> getOverridingExecutable(CtTypeReference<?> subType) {
+	public <S extends T> @Nullable CtExecutableReference<S> getOverridingExecutable(CtTypeReference<?> subType) {
 		if ((subType == null) || subType.equals(getDeclaringType())) {
 			return null;
 		}
@@ -279,7 +280,7 @@ public class CtExecutableReferenceImpl<T> extends CtReferenceImpl implements CtE
 	}
 
 	@Override
-	public Method getActualMethod() {
+	public @Nullable Method getActualMethod() {
 		List<CtTypeReference<?>> parameters = this.getParameters();
 
 		CtTypeReference<?> declaringType = getDeclaringType();
@@ -311,7 +312,7 @@ public class CtExecutableReferenceImpl<T> extends CtReferenceImpl implements CtE
 	}
 
 	@Override
-	public Constructor<?> getActualConstructor() {
+	public @Nullable Constructor<?> getActualConstructor() {
 		List<CtTypeReference<?>> parameters = this.getParameters();
 
 		CtTypeReference<?> declaringType = getDeclaringType();

@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtBodyHolder;
@@ -56,7 +57,7 @@ public class CtAnnotationMethodImpl<T> extends CtMethodImpl<T> implements CtAnno
 
 	@Override
 	@DerivedProperty
-	public CtBlock<T> getBody() {
+	public @Nullable CtBlock<T> getBody() {
 		return null;
 	}
 

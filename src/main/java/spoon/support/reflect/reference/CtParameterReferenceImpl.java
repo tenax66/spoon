@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.reference;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtParameter;
@@ -28,7 +29,7 @@ public class CtParameterReferenceImpl<T> extends CtVariableReferenceImpl<T> impl
 	}
 
 	@Override
-	public CtExecutableReference<?> getDeclaringExecutable() {
+	public @Nullable CtExecutableReference<?> getDeclaringExecutable() {
 		CtParameter<T> declaration = getDeclaration();
 		if (declaration == null) {
 			return null;
@@ -38,7 +39,7 @@ public class CtParameterReferenceImpl<T> extends CtVariableReferenceImpl<T> impl
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public CtParameter<T> getDeclaration() {
+	public @Nullable CtParameter<T> getDeclaration() {
 		final CtParameter<T> ctParameter = lookupDynamically();
 		if (ctParameter != null) {
 			return ctParameter;
@@ -46,7 +47,7 @@ public class CtParameterReferenceImpl<T> extends CtVariableReferenceImpl<T> impl
 		return null;
 	}
 
-	private CtParameter<T> lookupDynamically() {
+	private @Nullable CtParameter<T> lookupDynamically() {
 		CtElement element = this;
 		CtParameter optional = null;
 		String name = getSimpleName();

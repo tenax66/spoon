@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtExecutable;
@@ -57,7 +58,7 @@ public class CtParameterImpl<T> extends CtNamedElementImpl implements CtParamete
 
 	@Override
 	@DerivedProperty
-	public CtExpression<T> getDefaultExpression() {
+	public @Nullable CtExpression<T> getDefaultExpression() {
 		return null;
 	}
 
@@ -153,7 +154,7 @@ public class CtParameterImpl<T> extends CtNamedElementImpl implements CtParamete
 	}
 
 	@Override
-	public ModifierKind getVisibility() {
+	public @Nullable ModifierKind getVisibility() {
 		modifierHandler.getVisibility();
 		return null;
 	}

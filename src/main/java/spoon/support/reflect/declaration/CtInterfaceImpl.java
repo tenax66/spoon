@@ -7,6 +7,7 @@
  */
 package spoon.support.reflect.declaration;
 
+import org.jspecify.annotations.Nullable;
 import spoon.reflect.annotations.MetamodelPropertyField;
 import spoon.reflect.code.CtCodeElement;
 import spoon.reflect.code.CtStatement;
@@ -116,7 +117,7 @@ public class CtInterfaceImpl<T> extends CtTypeImpl<T> implements CtInterface<T> 
 	}
 
 	@Override
-	public String getLabel() {
+	public @Nullable String getLabel() {
 		return null;
 	}
 

@@ -8,6 +8,7 @@
 package spoon.support.compiler;
 
 import org.apache.commons.io.FileUtils;
+import org.jspecify.annotations.Nullable;
 import spoon.Launcher;
 import spoon.SpoonException;
 import spoon.compiler.SpoonFile;
@@ -112,7 +113,7 @@ public class ZipFolder implements SpoonFolder {
 	}
 
 	@Override
-	public SpoonFolder getParent() {
+	public @Nullable SpoonFolder getParent() {
 		try {
 			return SpoonResourceHelper.createFolder(file.getParentFile());
 		} catch (FileNotFoundException e) {
